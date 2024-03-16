@@ -3,8 +3,8 @@ from psycopg2 import sql
 
 #connect
 #input in the info
-#connection = psycopg2.connect(dbname="dbName", user="username", password="passWord", host="host", port="port")
-connection = psycopg2.connect(dbname="a3", user="postgres", password="333", host="localhost", port="5432")
+connection = psycopg2.connect(dbname="dbName", user="username", password="passWord", host="host", port="port")
+#connection = psycopg2.connect(dbname="a3", user="postgres", password="333", host="localhost", port="5432")
 cursor = connection.cursor()
 
 #create the table, if it is not created already
@@ -43,7 +43,8 @@ def getAllStudents():
 
 #add a student into the table, with the provided data
 def addStudent(first_name, last_name, email, enrollment_date):
-    cursor.execute("INSERT INTO students (first_name, last_name, email, enrollment_date) VALUES(%s, %s, %s, %s);", (first_name, last_name, email, enrollment_date))   
+    cursor.execute("INSERT INTO students (first_name, last_name, email, enrollment_date) VALUES(%s, %s, %s, %s);", 
+                   (first_name, last_name, email, enrollment_date))   
     connection.commit()
 
 #update the student's email corresponding to their id
